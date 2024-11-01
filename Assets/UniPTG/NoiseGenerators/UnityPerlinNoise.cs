@@ -14,7 +14,7 @@ namespace UniPTG.NoiseGenerators
 
         private Vector2 _offset;
 
-        internal override void InitState()
+        public override void InitState()
         {
             if (_isTimeMode)
             {
