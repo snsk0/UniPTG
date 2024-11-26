@@ -16,6 +16,8 @@ MonoBehaviour:
   - {fileID: 11500000, guid: 546d566ae5a76fa40a4714f4250ff7db, type: 3}
   - {fileID: 11500000, guid: 365154c5a8d5c084eb4b092210eaf2f5, type: 3}
   - {fileID: 11500000, guid: cfb7798e6b3edbb41b1c36290972cbfd, type: 3}
+  - {fileID: 11500000, guid: 37e875ec5cf7aad4a89b3677f104b415, type: 3}
+  - {fileID: 11500000, guid: 24368931911ec114abd1fe4a514689bd, type: 3}
   _heightmapGenerators:
   - {fileID: 11500000, guid: c4a84ef3c11b66e46b1b817a05626e66, type: 3}
   - {fileID: 11500000, guid: 624a54db65723cd43b0b60b8ed81d320, type: 3}

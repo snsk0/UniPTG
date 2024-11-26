@@ -201,7 +201,13 @@ namespace UniPTG.Editors
 
                 //heightmap‚ğ¶¬
                 float[,] heightMap = new float[_windowSettings.parameters.resolution, _windowSettings.parameters.resolution];
+
+                //¶¬‘¬“x‚ğŒv‘ª
+                var stopWatch = new System.Diagnostics.Stopwatch();
+                stopWatch.Start();
                 heightmapGenerator.Generate(heightMap, _windowSettings.parameters.resolution, noiseGenerator);
+                stopWatch.Stop();
+                Debug.Log("GenerateTime: " + stopWatch.ElapsedMilliseconds);
 
                 TerrainData data = TerrainGenerator.Generate(heightMap, _windowSettings.parameters.scale);
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UniPTG.NoiseGenerators
 {
-    internal class LegacyPerlinNoise : NoiseGeneratorBase
+    internal class PerlinNoise : NoiseGeneratorBase
     {
         private const float NoiseFrequency = 256f;
 
@@ -30,7 +30,7 @@ namespace UniPTG.NoiseGenerators
         };
 
         //Pの初期化
-        static LegacyPerlinNoise()
+        static PerlinNoise()
         {
             for (int i = 0; i < 256; i++)
             {
@@ -91,19 +91,32 @@ namespace UniPTG.NoiseGenerators
         //補完関数
         private float Fade(float t)
         {
-            return 3 * t * t - 2 * t * t * t;
+            return t * t * t * (t * (t * 6 - 15) + 10);
         }
 
         //勾配ベクトルと距離ベクトルの内積を求める
         private float Grad(int hash, float x, float y, float z)
         {
-            System.Random random = new System.Random(hash);
-
-            float vecX = (float)random.NextDouble();
-            float vecY = (float)random.NextDouble();
-            float vecZ = (float)random.NextDouble();
-
-            return vecX * x + vecY * y + vecZ * z;
+            switch (hash & 0xF)
+            {
+                case 0x0: return x + y;
+                case 0x1: return -x + y;
+                case 0x2: return x - y;
+                case 0x3: return -x - y;
+                case 0x4: return x + z;
+                case 0x5: return -x + z;
+                case 0x6: return x - z;
+                case 0x7: return -x - z;
+                case 0x8: return y + z;
+                case 0x9: return -y + z;
+                case 0xA: return y - z;
+                case 0xB: return -y - z;
+                case 0xC: return y + x;
+                case 0xD: return -y + z;
+                case 0xE: return y - x;
+                case 0xF: return -y - z;
+                default: return 0; // never happens
+            }
         }
 
         //加重平均
