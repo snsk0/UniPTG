@@ -9,8 +9,10 @@ public class MarchingCubes : MonoBehaviour
     {
         Dictionary<Vector3, int> vertices = new Dictionary<Vector3, int>();
         List<int> triangles = new List<int>();
+        var stopWatch = new System.Diagnostics.Stopwatch();
+        stopWatch.Start();
 
-        for(int x = 0; x < grid.GetLength(0) - 1; x++)
+        for (int x = 0; x < grid.GetLength(0) - 1; x++)
         {
             for(int y = 0; y < grid.GetLength(1) - 1; y++)
             {
@@ -86,10 +88,12 @@ public class MarchingCubes : MonoBehaviour
                         triangles.Add(e3);
                         triangleCount += 3;
                     }
-
                 }
             }
         }
+        stopWatch.Stop();
+        Debug.Log("GenerateTime: " + stopWatch.ElapsedMilliseconds);
+        stopWatch.Reset();
 
         Mesh mesh = new Mesh();
         mesh.vertices = vertices.Keys.ToArray();
@@ -120,24 +124,24 @@ public class MarchingCubes : MonoBehaviour
         grid[0, 1, 1] = 0;
         grid[1, 1, 1] = 1;
 
-        float[,,] grid2 = new float[16, 16, 16];
+        float[,,] grid2 = new float[64, 64, 64];
 
         int centerX = 8;
         int centerY = 8;
         int centerZ = 8;
 
-        for (int i = 0; i < 16; i++)
+        for (int i = 0; i < 64; i++)
         {
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < 64; j++)
             {
-                for (int k = 0; k < 16; k++)
+                for (int k = 0; k < 64; k++)
                 {
                     // ’†S‚©‚ç‚Ì‹——£‚ðŒvŽZ
                     int dx = i - centerX;
                     int dy = j - centerY;
                     int dz = k - centerZ;
 
-                    if (dx * dx + dy * dy + dz * dz > 32)
+                    if (dx * dx + dy * dy + dz * dz > 30)
                     {
                         grid2[i, j, k] = 1;
                     }
