@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   marchingCube: {fileID: 7200000, guid: 5e79b165b5deef742baae75cf27343ba, type: 3}
-  size: 64
+  size: 100
   isolevel: 0.5
 --- !u!1 &705507993
 GameObject:

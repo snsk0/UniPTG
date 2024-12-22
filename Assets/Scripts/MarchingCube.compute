@@ -537,7 +537,7 @@ static const int EdgeConnection[12][2] =
 };
 
 float isolevel;
-int size;
+uint size;
 
 struct Triangle
 {
